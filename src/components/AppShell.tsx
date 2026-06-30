@@ -26,15 +26,15 @@ const STORAGE_KEY = "prodloop.sidebar.open";
 
 export function AppShell({ children, topbar }: { children: ReactNode; topbar?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
-  // Closed by default (icon rail)
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
+  const [open, setOpen] = useState(() => {
     try {
       const v = localStorage.getItem(STORAGE_KEY);
-      if (v === "1") setOpen(true);
-    } catch {}
-  }, []);
+      // Default to open (true) if not set, or match the saved value
+      return v === null ? true : v === "1";
+    } catch {
+      return true;
+    }
+  });
 
   function toggle() {
     setOpen((o) => {
