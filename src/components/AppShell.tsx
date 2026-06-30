@@ -27,14 +27,20 @@ const STORAGE_KEY = "prodloop.sidebar.open";
 export function AppShell({ children, topbar }: { children: ReactNode; topbar?: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(() => {
+    if (typeof window === "undefined") return false;
     try {
       const v = localStorage.getItem(STORAGE_KEY);
-      // Default to open (true) if not set, or match the saved value
       return v === null ? true : v === "1";
     } catch {
       return true;
     }
   });
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function toggle() {
     setOpen((o) => {
@@ -47,7 +53,9 @@ export function AppShell({ children, topbar }: { children: ReactNode; topbar?: R
   return (
     <div className="min-h-screen bg-canvas">
       <aside
-        className={`fixed inset-y-0 left-0 z-30 hidden flex-col border-r border-hairline bg-canvas-soft/80 backdrop-blur-xl transition-[width] duration-200 ease-out md:flex ${
+        className={`fixed inset-y-0 left-0 z-30 hidden flex-col border-r border-hairline bg-canvas-soft/80 backdrop-blur-xl md:flex ${
+          mounted ? "transition-[width] duration-200 ease-out" : ""
+        } ${
           open ? "w-56" : "w-[60px]"
         }`}
       >
