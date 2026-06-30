@@ -213,7 +213,7 @@ export function TestTab({ agent, onNext }: { agent: Agent; onNext: () => void })
 
             <div className="border-t border-hairline px-4 py-3 shrink-0 flex items-center justify-between">
               <Dropdown
-                label={VOICES.find((v) => v.id === tts)?.name ?? tts}
+                label={`Voice: ${VOICES.find((v) => v.id === tts)?.name ?? tts}`}
                 icon={Volume2}
                 options={VOICES.map((v) => ({ value: v.id, label: v.name, desc: v.desc }))}
                 value={tts}

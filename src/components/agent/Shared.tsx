@@ -65,7 +65,7 @@ export function Dropdown({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex w-full items-center justify-between gap-1.5 rounded-md border border-hairline bg-surface px-3 py-2 text-[12px] text-secondary-text hover:text-heading"
+        className="inline-flex w-full min-w-[120px] items-center justify-between gap-1.5 rounded-md border border-hairline bg-surface px-3 py-2 text-[12px] text-secondary-text hover:text-heading cursor-pointer"
       >
         <span className="inline-flex items-center gap-1.5">
           {Icon && <Icon className="h-3.5 w-3.5" />} {label}
@@ -73,7 +73,7 @@ export function Dropdown({
         <ChevronDown className="h-3 w-3" />
       </button>
       {open && (
-        <div className={`absolute left-0 right-0 z-30 overflow-hidden rounded-md border border-hairline bg-surface shadow-md ${openUp ? "bottom-full mb-1" : "top-full mt-1"}`}>
+        <div className={`absolute left-0 z-30 w-64 overflow-hidden rounded-md border border-hairline bg-surface shadow-md ${openUp ? "bottom-full mb-1" : "top-full mt-1"}`}>
           {options.map((o) => (
             <button
               key={o.value}
