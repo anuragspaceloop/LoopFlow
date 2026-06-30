@@ -48,9 +48,9 @@ export function AddActionDropdown({
       <button
         type="button"
         onClick={onToggle}
-        className="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-[12px] font-medium text-secondary-text hover:bg-canvas-soft hover:text-heading transition-colors cursor-pointer"
+        className="inline-flex h-[38px] items-center gap-1.5 rounded-lg border border-dashed border-hairline bg-surface px-3 text-[13px] font-semibold text-secondary-text hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
       >
-        <Plus className="h-3 w-3" /> Add
+        <Plus className="h-3.5 w-3.5" /> Add capability
       </button>
       {open && (
         <div className="absolute left-0 bottom-full z-30 mb-1.5 w-56 rounded-lg border border-hairline bg-surface p-1 shadow-lg animate-slide-up">
@@ -95,14 +95,13 @@ export function AddLanguageDropdown({
 
   return (
     <div ref={ref} className="relative">
-      <Button
-        variant="outline"
+      <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1.5 rounded-lg bg-canvas-soft/60 px-3 py-1.5 text-[13px] font-medium text-secondary-text hover:bg-canvas-soft hover:text-heading ring-1 ring-hairline transition-colors cursor-pointer border-none"
+        className="inline-flex h-[38px] items-center gap-1.5 rounded-lg border border-hairline bg-surface px-3 text-[13px] font-semibold text-secondary-text hover:bg-canvas-soft hover:text-heading transition-colors cursor-pointer"
       >
         <Plus className="h-3.5 w-3.5" /> Add language
-      </Button>
+      </button>
       {open && (
         <div className="absolute left-0 mt-1 z-30 w-64 rounded-lg border border-hairline bg-surface p-1 shadow-lg animate-slide-up">
           {available.map((lang) => (

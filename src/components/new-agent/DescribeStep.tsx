@@ -140,7 +140,7 @@ export function DescribeStep({
           {actions
             .filter((a) => !disabledActionIds.includes(a.id))
             .map((a) => (
-              <span key={a.id} className="inline-flex items-center gap-1.5 rounded-lg bg-canvas-soft px-2.5 py-1.5 text-[12.5px] font-medium text-heading ring-1 ring-hairline">
+              <span key={a.id} className="inline-flex h-[38px] items-center gap-1.5 rounded-lg bg-canvas-soft px-3 text-[13px] font-semibold text-heading border border-hairline">
                 {a.label}
                 <button
                   type="button"
@@ -155,7 +155,7 @@ export function DescribeStep({
           {manualActions.map((label) => {
             const id = label.toLowerCase().replace(/\s+/g, "-");
             return (
-              <span key={label} className="inline-flex items-center gap-1.5 rounded-lg bg-canvas-soft px-2.5 py-1.5 text-[12.5px] font-medium text-heading ring-1 ring-hairline">
+              <span key={label} className="inline-flex h-[38px] items-center gap-1.5 rounded-lg bg-canvas-soft px-3 text-[13px] font-semibold text-heading border border-hairline">
                 {label}
                 <button
                   type="button"

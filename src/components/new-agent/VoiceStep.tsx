@@ -31,13 +31,13 @@ export function VoiceStep({
       <Field label="Languages" icon={Languages} hint="Select one or more languages. The agent can switch dynamically on caller cue.">
         <div className="flex flex-wrap items-center gap-2">
           {selectedLanguages.map((lang) => (
-            <span key={lang} className="inline-flex items-center gap-1.5 rounded-lg bg-canvas-soft px-2.5 py-1.5 text-[13px] font-medium text-heading ring-1 ring-hairline">
+            <span key={lang} className="inline-flex h-[38px] items-center gap-1.5 rounded-lg bg-primary-soft px-3 text-[13px] font-semibold text-primary border border-violet-border/50">
               {lang}
               {selectedLanguages.length > 1 && (
                 <button
                   type="button"
                   onClick={() => setSelectedLanguages((prev) => prev.filter((l) => l !== lang))}
-                  className="text-secondary-text hover:text-destructive cursor-pointer"
+                  className="text-primary hover:text-destructive cursor-pointer"
                   aria-label={`Remove ${lang}`}
                 >
                   <X className="h-3.5 w-3.5" />
