@@ -225,11 +225,11 @@ function AIDrawer({
 
   const hasConversation = turns.length > 0;
 
-  async function send() {
-    if (!input.trim() || loading) return;
-    const userMessage = input;
+  async function send(customText?: string) {
+    const textToSend = customText || input;
+    if (!textToSend.trim() || loading) return;
     setInput("");
-    setTurns((t) => [...t, { role: "you", text: userMessage }]);
+    setTurns((t) => [...t, { role: "you", text: textToSend }]);
     setLoading(true);
 
     try {
@@ -262,8 +262,26 @@ Acme Corp Policies:
     }
   }
 
+  const SUGGESTIONS = target === "all"
+    ? [
+        "📞 Inbound customer support bot",
+        "📅 Outbound appointment scheduler",
+        "💸 Refund & order lookup agent"
+      ]
+    : target === "persona"
+    ? [
+        "⚡ Make the tone warmer & empathetic",
+        "🎯 Make the responses more concise",
+        "🛡️ Always verify caller identity first"
+      ]
+    : [
+        "📦 Add return window of 30 days",
+        "📧 Add support email: support@acme.com",
+        "🌐 Add business hours: 9 AM - 5 PM"
+      ];
+
   return (
-    <aside className="fixed right-0 bottom-0 top-14 z-40 flex w-full flex-col border-l border-hairline bg-surface shadow-lg animate-slide-in-right lg:w-[400px]">
+    <aside className="fixed right-4 bottom-4 top-[72px] z-40 flex w-[calc(100%-32px)] md:w-[400px] flex-col rounded-2xl border border-hairline bg-surface shadow-2xl animate-slide-in-right overflow-hidden">
       <header className="flex items-center justify-between border-b border-hairline px-4 py-3 shrink-0">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -287,13 +305,29 @@ Acme Corp Policies:
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 no-scrollbar">
         {!hasConversation ? (
           <div className="flex h-full flex-col items-center justify-center text-center">
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-canvas-soft text-secondary-text ring-1 ring-hairline">
-              <Sparkles className="h-6 w-6 text-primary animate-pulse-soft" />
-            </span>
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary/15 to-violet-500/5 text-primary ring-1 ring-primary/25 shadow-xs">
+              <Sparkles className="h-7 w-7 text-primary animate-pulse" />
+              <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+              </span>
+            </div>
             <h4 className="mt-4 text-[14px] font-semibold text-heading">Describe your voice agent</h4>
             <p className="mx-auto mt-2 max-w-[260px] text-[12px] leading-relaxed text-secondary-text">
               Tell me what you want the agent to do. I will draft the persona, knowledge base, and auto-wire capabilities.
             </p>
+            <div className="mt-6 flex flex-col gap-2 w-full max-w-[280px]">
+              {SUGGESTIONS.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => send(s)}
+                  className="rounded-xl border border-hairline bg-surface px-3 py-2.5 text-left text-[12.5px] font-medium text-secondary-text transition-all hover:border-primary/30 hover:bg-primary-soft hover:text-primary cursor-pointer active:scale-[0.98]"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
@@ -344,7 +378,7 @@ Acme Corp Policies:
               const lastAI = [...turns].reverse().find((t) => t.role === "ai");
               if (lastAI) onApply(lastAI.text);
             }}
-            className="mb-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-primary py-2 text-[13px] font-medium text-white transition-colors hover:bg-primary-hover cursor-pointer shadow-sm"
+            className="mb-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-primary py-2 text-[13px] font-medium text-white transition-colors hover:bg-primary-hover cursor-pointer shadow-sm animate-slide-up"
           >
             Apply to agent configuration
           </button>
@@ -368,7 +402,7 @@ Acme Corp Policies:
             className="max-h-32 min-h-[28px] flex-1 resize-none bg-transparent px-2 py-1 text-[13px] text-heading placeholder:text-muted-text focus:outline-none"
           />
           <button
-            onClick={send}
+            onClick={() => send()}
             disabled={!input.trim() || loading}
             className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white disabled:opacity-30 transition-colors hover:bg-primary-hover cursor-pointer"
             aria-label="Send"
