@@ -5,27 +5,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium cursor-pointer transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-[13px] font-semibold cursor-pointer transition-all duration-140 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_4px_14px_-4px_rgba(111,94,247,0.45)] hover:bg-primary-hover hover:shadow-[0_8px_24px_-6px_rgba(111,94,247,0.55)]",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-primary text-primary-foreground shadow-[0_1px_2px_rgba(99,102,241,0.15),_inset_0_1px_0_rgba(255,255,255,0.15)] hover:bg-primary-hover hover:shadow-[0_4px_12px_rgba(99,102,241,0.22),_inset_0_1px_0_rgba(255,255,255,0.15)] hover:-translate-y-0.5 active:translate-y-0",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:-translate-y-0.5 active:translate-y-0",
         outline:
-          "border border-violet-border bg-transparent text-primary-deep hover:bg-light-violet",
+          "border border-hairline bg-surface text-heading shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:bg-canvas-soft hover:border-primary-hover hover:text-primary hover:-translate-y-0.5 active:translate-y-0",
         secondary:
-          "bg-light-violet text-primary-deep hover:bg-lavender/60",
-        ghost: "hover:bg-light-violet text-body hover:text-primary-deep",
+          "bg-canvas-soft border border-hairline text-heading hover:bg-primary-soft hover:text-primary hover:border-primary-hover/20 hover:-translate-y-0.5 active:translate-y-0",
+        ghost: "hover:bg-canvas-soft text-secondary-text hover:text-heading",
         link: "text-primary underline-offset-4 hover:underline rounded-none",
-        soft: "bg-white border border-violet-border/60 text-heading hover:border-violet-border hover:bg-elevated",
+        soft: "bg-white border border-violet-border/60 text-heading hover:border-violet-border hover:bg-elevated hover:-translate-y-0.5 active:translate-y-0",
       },
       size: {
-        default: "h-10 px-5 py-2",
-        sm: "h-8 px-4 text-xs",
-        lg: "h-12 px-7 text-[15px]",
-        xl: "h-14 px-9 text-base",
-        icon: "h-10 w-10",
+        default: "h-[38px] px-4 py-2",
+        sm: "h-8 px-3 text-xs",
+        lg: "h-11 px-6 text-[14px]",
+        xl: "h-13 px-8 text-base",
+        icon: "h-[38px] w-[38px]",
       },
     },
     defaultVariants: {
@@ -33,7 +33,6 @@ const buttonVariants = cva(
       size: "default",
     },
   },
-
 );
 
 export interface ButtonProps

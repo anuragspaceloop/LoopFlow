@@ -52,8 +52,8 @@ function Dashboard() {
             <span className="text-[13px] font-medium text-muted-text">{agents.length} total</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="hidden items-center gap-2 rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-[12px] text-secondary-text md:flex">
-              <Search className="h-3.5 w-3.5" />
+            <div className="hidden h-[38px] items-center gap-2 rounded-lg border border-hairline bg-surface px-3 text-[13px] text-secondary-text md:flex">
+              <Search className="h-4 w-4 shrink-0" />
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
@@ -63,9 +63,9 @@ function Dashboard() {
             </div>
             <button
               onClick={() => setModalOpen(true)}
-              className="btn-primary inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium"
+              className="btn-primary"
             >
-              <Plus className="h-3.5 w-3.5" /> New agent
+              <Plus className="h-4 w-4" /> New agent
             </button>
           </div>
         </TopBar>

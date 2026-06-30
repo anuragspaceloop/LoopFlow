@@ -423,7 +423,7 @@ function FixCard({
         <div className="mt-3 flex gap-1.5">
           <button
             onClick={onApply}
-            className="btn-primary inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-[11px] font-medium cursor-pointer"
+            className="btn-primary h-8 px-3 text-[12px]"
           >
             <CheckCircle2 className="h-3 w-3" /> Apply change
           </button>

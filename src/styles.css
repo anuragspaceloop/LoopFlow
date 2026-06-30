@@ -174,11 +174,83 @@
 @utility btn-primary {
   background-color: var(--color-primary);
   color: var(--color-primary-foreground);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.10);
-  transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  font-weight: 600;
+  font-size: 13px;
+  height: 38px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
   &:hover {
     background-color: var(--color-primary-hover);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.10);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(99, 102, 241, 0.15);
+  }
+}
+
+@utility btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  font-weight: 600;
+  font-size: 13px;
+  height: 38px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-canvas-soft);
+    border-color: var(--color-primary-hover);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+}
+
+@utility btn-icon {
+  background-color: var(--color-surface);
+  color: var(--color-secondary-text);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-canvas-soft);
+    border-color: var(--color-primary-hover);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    transform: translateY(0);
   }
 }
 

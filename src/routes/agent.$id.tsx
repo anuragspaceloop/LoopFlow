@@ -10,6 +10,7 @@ import {
   Workflow,
   Plug,
   Phone,
+  ArrowLeft,
 } from "lucide-react";
 
 import { ActivityTab } from "@/components/agent/ActivityTab";
@@ -74,10 +75,10 @@ function AgentPage() {
       <div className="flex items-center gap-3">
         <Link
           to="/"
-          className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-hairline bg-surface text-secondary-text hover:text-heading"
+          className="btn-icon"
           aria-label="Back to dashboard"
         >
-          &larr;
+          <ArrowLeft className="h-4 w-4" />
         </Link>
         <AgentAvatar name={agent.name} accent={agent.template ? "emerald" : "violet"} size={28} />
         <h1 className="text-[15px] font-semibold tracking-tight text-heading">{agent.name}</h1>
@@ -86,7 +87,7 @@ function AgentPage() {
       <div className="flex items-center gap-2">
         <button
           onClick={() => setAdvancedOpen(true)}
-          className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-[12px] text-secondary-text hover:text-heading cursor-pointer"
+          className="btn-secondary"
         >
           <Settings2 className="h-3.5 w-3.5" /> Advanced
         </button>

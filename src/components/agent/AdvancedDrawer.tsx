@@ -67,7 +67,7 @@ function PersonaEditor({ agent }: { agent: Agent }) {
         <button
           disabled={!dirty}
           onClick={() => updateAgent(agent.id, { persona: val })}
-          className="btn-primary rounded-md px-3 py-1.5 text-[12px] font-medium disabled:opacity-40 cursor-pointer"
+          className="btn-primary disabled:opacity-40"
         >
           Save
         </button>

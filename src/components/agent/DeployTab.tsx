@@ -47,7 +47,7 @@ export function DeployTab({ agent }: { agent: Agent }) {
         </div>
         <button
           onClick={() => updateAgent(agent.id, { status: isLive ? "draft" : "live" })}
-          className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium cursor-pointer transition-colors ${isLive ? "border border-hairline bg-surface text-secondary-text hover:text-destructive" : "btn-primary"}`}
+          className={isLive ? "btn-secondary hover:text-destructive" : "btn-primary"}
         >
           {isLive ? "Unpublish" : "Promote to production"}
         </button>
@@ -67,7 +67,7 @@ export function DeployTab({ agent }: { agent: Agent }) {
               <p className="font-mono text-[22px] tracking-tight text-heading">{number}</p>
               <button
                 onClick={copyNumber}
-                className="inline-flex items-center gap-1 rounded-md border border-hairline bg-surface px-2 py-1 text-[11px] text-secondary-text hover:text-heading cursor-pointer"
+                className="btn-secondary h-8 px-2.5 text-[11.5px]"
               >
                 {copied ? <CheckCircle2 className="h-3 w-3 text-status-live" /> : <Copy className="h-3 w-3" />}
                 {copied ? "Copied" : "Copy"}
@@ -87,10 +87,10 @@ export function DeployTab({ agent }: { agent: Agent }) {
             </div>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
-            <button className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-surface px-3 py-1.5 text-[12px] text-secondary-text hover:text-heading cursor-pointer">
+            <button className="btn-secondary">
               Map a custom number
             </button>
-            <button className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-surface px-3 py-1.5 text-[12px] text-secondary-text hover:text-heading cursor-pointer">
+            <button className="btn-secondary">
               Set business hours
             </button>
           </div>

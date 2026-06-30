@@ -82,11 +82,7 @@ export function IntegrationsTab({ agent, onNext }: { agent: Agent; onNext: () =>
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-[10.5px] uppercase tracking-wider text-muted-text">{i.category}</span>
                 <button
-                  className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-[11.5px] font-medium transition-colors cursor-pointer ${
-                    connected
-                      ? "text-secondary-text hover:text-heading"
-                      : "btn-primary"
-                  }`}
+                  className={connected ? "btn-secondary h-8 px-3 text-[11.5px]" : "btn-primary h-8 px-3 text-[11.5px]"}
                 >
                   {connected ? (
                     <>
