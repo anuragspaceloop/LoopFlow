@@ -263,7 +263,7 @@ Acme Corp Policies:
   }
 
   return (
-    <aside className="fixed right-0 bottom-0 top-12 z-20 flex w-full flex-col border-l border-hairline bg-surface shadow-lg animate-slide-in-right lg:w-[400px]">
+    <aside className="fixed right-0 bottom-0 top-14 z-40 flex w-full flex-col border-l border-hairline bg-surface shadow-lg animate-slide-in-right lg:w-[400px]">
       <header className="flex items-center justify-between border-b border-hairline px-4 py-3 shrink-0">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-primary/10 text-primary">
