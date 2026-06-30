@@ -6,6 +6,7 @@ import {
   Phone,
   PhoneOff,
   ChevronDown,
+  ChevronRight,
   BookOpen,
   CheckCircle2,
   Send,
@@ -196,16 +197,6 @@ export function TestTab({ agent, onNext }: { agent: Agent; onNext: () => void })
               </div>
               
               <div className="flex items-center gap-2">
-                <Dropdown
-                  label={VOICES.find((v) => v.id === tts)?.name ?? tts}
-                  icon={Volume2}
-                  options={VOICES.map((v) => ({ value: v.id, label: v.name, desc: v.desc }))}
-                  value={tts}
-                  onChange={(v) => {
-                    setTts(v);
-                    updateAgent(agent.id, { tts: v });
-                  }}
-                />
                 <Button
                   variant="outline"
                   onClick={() => setChatOpen(true)}
@@ -216,15 +207,26 @@ export function TestTab({ agent, onNext }: { agent: Agent; onNext: () => void })
               </div>
             </header>
 
-            <div className="flex flex-1 flex-col items-center justify-center min-h-0">
+            <div className="flex flex-1 flex-col items-center justify-center min-h-0 overflow-hidden relative">
               <LiveCallOrb state={callState} />
             </div>
 
-            <div className="border-t border-hairline px-4 py-3 shrink-0 flex justify-end">
+            <div className="border-t border-hairline px-4 py-3 shrink-0 flex items-center justify-between">
+              <Dropdown
+                label={VOICES.find((v) => v.id === tts)?.name ?? tts}
+                icon={Volume2}
+                options={VOICES.map((v) => ({ value: v.id, label: v.name, desc: v.desc }))}
+                value={tts}
+                onChange={(v) => {
+                  setTts(v);
+                  updateAgent(agent.id, { tts: v });
+                }}
+                openUp={true}
+              />
               {callState === "idle" ? (
                 <Button
                   onClick={startCall}
-                  className="gap-1.5 cursor-pointer w-full sm:w-auto"
+                  className="gap-1.5 cursor-pointer"
                 >
                   <Phone className="h-4 w-4" /> Start call
                 </Button>
@@ -232,7 +234,7 @@ export function TestTab({ agent, onNext }: { agent: Agent; onNext: () => void })
                 <Button
                   onClick={endCall}
                   variant="destructive"
-                  className="gap-1.5 cursor-pointer w-full sm:w-auto"
+                  className="gap-1.5 cursor-pointer"
                 >
                   <PhoneOff className="h-4 w-4" /> End call
                 </Button>
@@ -364,7 +366,7 @@ export function TestTab({ agent, onNext }: { agent: Agent; onNext: () => void })
                 onClick={onNext}
                 className="gap-1.5 cursor-pointer"
               >
-                Continue to Workflow <ChevronDown className="h-4 w-4" />
+                Continue to Workflow <ChevronRight className="h-4 w-4" />
               </Button>
             </footer>
           )}
