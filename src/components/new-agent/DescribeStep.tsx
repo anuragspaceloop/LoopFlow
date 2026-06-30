@@ -68,9 +68,9 @@ export function DescribeStep({
         <button
           type="button"
           onClick={() => setAiOpen("all")}
-          className="inline-flex items-center gap-2 rounded-lg bg-canvas-soft px-3.5 py-2 text-[13px] font-medium text-heading ring-1 ring-hairline transition-all hover:bg-primary-soft hover:ring-primary/30 hover:text-primary cursor-pointer"
+          className="btn-secondary text-primary border-primary/25 bg-surface hover:bg-primary-soft hover:border-primary/40"
         >
-          <Wand2 className="h-3.5 w-3.5 text-primary" /> Fill with AI
+          <Wand2 className="h-3.5 w-3.5 text-primary" /> Build with AI
         </button>
       </div>
 
