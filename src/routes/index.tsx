@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { AppShell, TopBar } from "@/components/AppShell";
 import { StatusPill, AgentAvatar } from "@/components/StatusPill";
-import { CreateAgentModal } from "@/components/CreateAgentModal";
 import { useAgents } from "@/lib/use-agents";
 import { deleteAgent, type Agent, TEMPLATES } from "@/lib/agent-store";
 import {
@@ -27,8 +26,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Dashboard() {
+  const navigate = useNavigate();
   const agents = useAgents();
-  const [modalOpen, setModalOpen] = useState(false);
   const [q, setQ] = useState("");
 
   const filtered = useMemo(
@@ -62,7 +61,7 @@ function Dashboard() {
               />
             </div>
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={() => navigate({ to: "/new" })}
               className="btn-primary"
             >
               <Plus className="h-4 w-4" /> New agent
@@ -95,7 +94,7 @@ function Dashboard() {
           </header>
 
           {filtered.length === 0 ? (
-            <EmptyState onCreate={() => setModalOpen(true)} />
+            <EmptyState onCreate={() => navigate({ to: "/new" })} />
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-[13px]">
@@ -119,8 +118,6 @@ function Dashboard() {
           )}
         </section>
       </main>
-
-      <CreateAgentModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </AppShell>
   );
 }
