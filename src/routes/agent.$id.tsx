@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AppShell, TopBar } from "@/components/AppShell";
 import { StatusPill, AgentAvatar } from "@/components/StatusPill";
-import { getAgent } from "@/lib/agent-store";
+import { getAgent, TEMPLATES } from "@/lib/agent-store";
 import {
   Settings2,
   Activity,
@@ -70,6 +70,8 @@ function AgentPage() {
 
   if (!agent) return null;
 
+  const accent = TEMPLATES.find((t) => t.id === agent.template)?.accent ?? "violet";
+
   const topbar = (
     <TopBar>
       <div className="flex items-center gap-3">
@@ -80,7 +82,7 @@ function AgentPage() {
         >
           <ArrowLeft className="h-4 w-4" />
         </Link>
-        <AgentAvatar name={agent.name} accent={agent.template ? "emerald" : "violet"} size={28} />
+        <AgentAvatar name={agent.name} accent={accent} size={28} avatar={agent.avatar} />
         <h1 className="text-[15px] font-semibold tracking-tight text-heading">{agent.name}</h1>
         <StatusPill status={agent.status} />
       </div>
